@@ -85,25 +85,33 @@ ab.plot_funnel()
 
 ![1](img/1.PNG)
 
+basic funnel plot
+
 
 
 ##### 4.2.3 ab test
 
 ```python
-ab.abtest(initial, target, condition)
+ab.abtest('home', 'conf', 'sex')
 ```
 
 ![5](img/5.PNG)
 
+there are 3 arguments position.
 
+first 2 arguments are 2 of 'funnel stage' and last argument is one of element in 'conditions'.  in the above example, 'home' is interest stage and 'conf' is your comparing stage. it just show you simple conversion rate of  **'conf' / 'home'** . it means almost 0.5% of 'Female' reach to 'conf' stage from 'home' stage and 0.04% of 'Male' reach to 'conf' stage from 'home' stage. 
 
 
 
 ```python
-ab.beta(initial, target, condition)
+ab.beta('home', 'conf', 'sex')
 ```
 
 ![6](img/6.PNG)
+
+it is pretty much same with 'ab.abtest' above. but it tells you not conversion rate but beta distribution parameter **mu** , **var**  based on non-informative prior beta(1,1). this parameters are information of updated posterior distribution.
+
+
 
 ```python
 print(ab.index)
@@ -112,6 +120,10 @@ print(ab.beta)
 ```
 
 ![8](img/8.PNG)
+
+information of posterior beta distribution of each group.
+
+
 
 
 
@@ -129,8 +141,8 @@ ab.funnel('device')
 
 ##### 2.5 bayesian a/b simulation
 
-```
-ab.absim(initial, target, condition)
+```python
+ab.absim('home', 'conf', 'sex')
 ```
 
 ```python
