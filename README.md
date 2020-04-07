@@ -1,10 +1,10 @@
-# ab_tester (version Beta)
+# tester 
 
 
 
 simple module for A/B test.
 
-**ab_tester.py**
+**tester.py**
 
 
 
@@ -12,19 +12,20 @@ simple module for A/B test.
 
 ### 0. Up-comming updates
 
-* live updating function based on 'thompson' sampling
+* revised updating 
 * visualization function( comparing plot, etc)
 
 
 
-### 1. Function (04/05/20)
+### 1. Function (04/07/20)
 
 * Conversion rate 
 * Bayesian simulation ( A/B test )
 * Funnel analysis  basic
 *  plotting
 
-
+* thompson sampling(MAB)
+  * sample, update, status
 
 ### 2. Dependencies
 
@@ -65,12 +66,12 @@ source : https://www.kaggle.com/aerodinamicc/ecommerce-website-funnel-analysis#u
 
 
 
-#### 4.2 basic 
+#### 4.2 basic - 'report'
 
 ##### 4.2.1 initialize
 
 ```python
-ab = ab_tester(data, ['device','sex'])
+ab = report(data, ['device','sex'])
 ```
 
 at first, you should initialize the model. put the right dataframe structure first and 'conditions' columns after
@@ -92,7 +93,7 @@ basic funnel plot
 ##### 4.2.3 ab test
 
 ```python
-ab.abtest('home', 'conf', 'sex')
+ab.conversion('home', 'conf', 'sex')
 ```
 
 ![5](img/5.PNG)
@@ -100,28 +101,6 @@ ab.abtest('home', 'conf', 'sex')
 there are 3 arguments position.
 
 first 2 arguments are 2 of 'funnel stage' and last argument is one of element in 'conditions'.  in the above example, 'home' is interest stage and 'conf' is your comparing stage. it just show you simple conversion rate of  **'conf' / 'home'** . it means almost 0.5% of 'Female' reach to 'conf' stage from 'home' stage and 0.04% of 'Male' reach to 'conf' stage from 'home' stage. 
-
-
-
-```python
-ab.beta('home', 'conf', 'sex')
-```
-
-![6](img/6.PNG)
-
-it is pretty much same with 'ab.abtest' above. but it tells you not conversion rate but beta distribution parameter **mu** , **var**  based on non-informative prior beta(1,1). this parameters are information of updated posterior distribution.
-
-
-
-```python
-print(ab.index)
-print(ab.alpha)
-print(ab.beta)
-```
-
-![8](img/8.PNG)
-
-information of posterior beta distribution of each group.
 
 
 
@@ -162,3 +141,13 @@ ab.plot_posterior(ab.trace, 'diff_Desktop_Mobile')
 ![4](img/4.PNG)
 
 *output is same exactly with arviz plot
+
+
+
+#### 4.3 basic - 'mab'
+
+* sample
+
+* update
+
+* status
