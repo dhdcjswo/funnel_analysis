@@ -4,7 +4,7 @@
 
 simple module for A/B test.
 
-**tester.py**
+**funnel_analysis.ipynb**
 
 
 
