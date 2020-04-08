@@ -147,7 +147,10 @@ ab.plot_posterior(ab.trace, 'diff_Desktop_Mobile')
 #### 4.3 basic - 'mab'
 
 * sample
-
 * update
 
-* status
+![8](img/8.PNG)
+
+* status 
+
+![9](img/9.PNG)
